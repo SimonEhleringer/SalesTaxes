@@ -11,7 +11,7 @@ namespace SalesTaxes.Core.Models
     {
         public string Name { get; set; }
 
-        public double PriceWithoutTax { get; set; }
+        public decimal PriceWithoutTax { get; set; }
 
         public Category Category { get; set; }
 

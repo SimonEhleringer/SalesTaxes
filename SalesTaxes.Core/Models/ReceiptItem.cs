@@ -10,6 +10,6 @@ namespace SalesTaxes.Core.Models
     {
         public string Name { get; set; }
 
-        public double PriceWithTax { get; set; }
+        public decimal PriceWithTax { get; set; }
     }
 }

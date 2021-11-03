@@ -26,7 +26,7 @@ namespace SalesTaxes.Core.Tests.Services
         [InlineData(Category.CosmeticProducts, false, 18.99, 20.89)]
         [InlineData(Category.MedicalProducts, false, 9.75, 9.75)]
         [InlineData(Category.Food, true, 11.25, 11.85)]
-        public void Create_ShouldGenerateCorrectTax(Category category, bool isImported, decimal priceWithoutTax, decimal ExceptedPriceWithTax)
+        public void Create_ShouldGenerateCorrectTax(Category category, bool isImported, decimal priceWithoutTax, decimal ExpectedPriceWithTax)
         {
             // Arrange
             var item = new Item()
@@ -41,7 +41,7 @@ namespace SalesTaxes.Core.Tests.Services
             var receiptItem = _receiptItemService.Create(item);
 
             // Assert
-            Assert.Equal(ExceptedPriceWithTax, receiptItem.PriceWithTax);
+            Assert.Equal(ExpectedPriceWithTax, receiptItem.PriceWithTax);
         }
 
         [Fact]

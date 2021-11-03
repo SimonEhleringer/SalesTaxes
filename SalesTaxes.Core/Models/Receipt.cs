@@ -8,7 +8,7 @@ namespace SalesTaxes.Core.Models
 {
     public class Receipt
     {
-        public IList<ReceiptItem> receiptItems { get; set; }
+        public IList<ReceiptItem> ReceiptItems { get; set; }
 
         public decimal SalesTaxes { get; set; }
 

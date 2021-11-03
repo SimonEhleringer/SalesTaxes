@@ -22,7 +22,7 @@ namespace SalesTaxes.Core.Services
             return receiptItem;
         }
 
-        private int GetTaxForItemInPercent(Item item)
+        private static int GetTaxForItemInPercent(Item item)
         {
             var taxInPercent = 0;
 
@@ -41,23 +41,13 @@ namespace SalesTaxes.Core.Services
             return taxInPercent;
         }
 
-        private decimal RoundUpToNearestFiveHundredths(decimal value)
-        {
-            return Math.Ceiling(value * 20) / 20;
-        }
-
-        private decimal GetAmountOfTax(decimal priceWithoutTax, decimal taxInPercent)
-        {
-            return priceWithoutTax * taxInPercent / 100;
-        }
-
-        private decimal GetPriceWithTax(Item item)
+        private static decimal GetPriceWithTax(Item item)
         {
             var taxInPercent = GetTaxForItemInPercent(item);
 
-            var amountOfTax = GetAmountOfTax(item.PriceWithoutTax, taxInPercent);
+            var amountOfTax = Helpers.GetAmountOfTax(item.PriceWithoutTax, taxInPercent);
 
-            var roundedAmountOfTax = RoundUpToNearestFiveHundredths(amountOfTax);
+            var roundedAmountOfTax = Helpers.RoundUpToNearestFiveHundredths(amountOfTax);
 
             var priceWithTax = item.PriceWithoutTax + roundedAmountOfTax;
 
